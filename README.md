@@ -1,149 +1,111 @@
-🏛️ eBarangay
+# 🏛️ eBarangay
 
-A Web-Based e-Governance and Document Requisition System for Alfonso XIII, Quezon, Palawan
+**A Web-Based e-Governance and Document Requisition System**  
+Alfonso XIII, Quezon, Palawan
 
-📌 Overview
+---
 
-eBarangay is a web-based e-governance system designed to improve the efficiency, accessibility, and transparency of barangay services in Alfonso XIII, Quezon, Palawan.
+## 📌 Overview
 
-The system replaces manual, paper-based transactions with a centralized digital platform, allowing residents and barangay officials to manage document requests, concerns, and records through an online interface.
+eBarangay is a **web-based system** that digitizes barangay services, allowing residents to request documents, submit concerns, and track transactions online.
 
-🎯 Objectives
-Digitize and centralize barangay transactions
-Streamline document request processing
-Improve service accessibility for residents
-Reduce waiting time and manual workload
-Provide real-time request status tracking
-Maintain organized and secure records
-👥 User Roles
-🔐 Admin / Barangay Secretary
-Full system control
-Manage document requests
-Approve, reject, and update request status
-Handle resident concerns
-Manage resident records
-Monitor system activities and reports
-🏠 Residents
-Register and login to the system
-Request barangay documents
-Track request status
-Submit concerns or complaints
-Receive notifications and updates
-⚙️ Core Features
-📄 Document Requisition System
-Barangay Clearance
-Certificate of Residency
-Certificate of Indigency
-Barangay ID
-🔄 Request Status Workflow
+---
 
-Pending → Under Review → Approved → Ready for Claiming → Completed
+## 🎯 Objectives
 
-Other Features
-📝 Concern Management System
-🔔 Notification System
-📁 Centralized Records Management
-📊 Admin Dashboard
-🔐 Role-Based Access Control
-🔐 Authentication & Security
-Laravel Authentication System
-Role-based access for Admin and Resident
-Secure password hashing
-Password reset via email
-Protected routes and middleware
-Users can only access their own data
-🔑 Forgot Password System
+- Digitize barangay transactions  
+- Streamline document processing  
+- Reduce waiting time  
+- Improve service accessibility  
+- Maintain centralized records  
 
-eBarangay uses Laravel’s built-in password reset functionality.
+---
 
-Reset Flow
-User clicks Forgot Password
-User enters registered email
-User receives reset link via email
-User sets a new password securely
-🛠️ Technology Stack
-Layer	Technology
-Backend	Laravel (PHP)
-Database	MySQL
-Frontend	Blade (HTML, CSS, JavaScript)
-Styling	Tailwind CSS
-Architecture	Client-Server
-🎨 UI Design
-Primary Color: Blue #0038A8
-Secondary Color: Red #CE1126
-Philippine-inspired government theme 🇵🇭
-Clean and modern interface
-Fully responsive (desktop, tablet, mobile)
-🖨️ Document Generation (Planned Feature)
-Auto-filled document templates
-Printable and downloadable PDF files
-Based on resident input and request data
-Requires signature from authorized barangay personnel
-🔄 System Workflow
+## 👥 User Roles
 
-Resident registers/logs in
-↓
-Resident submits document request
-↓
-Admin reviews and processes request
-↓
-System updates request status
-↓
-Resident receives notification
-↓
-Document is prepared and released
+### 🔐 Admin
+- Manage requests  
+- Approve / reject documents  
+- Handle concerns  
+- Monitor system  
 
-📁 Project Structure
-app/
-├── Models/
-├── Http/
-│   ├── Controllers/
-│   └── Middleware/
+### 🏠 Residents
+- Register & login  
+- Request documents  
+- Track status  
+- Submit concerns  
 
-database/
-├── migrations/
-├── seeders/
+---
 
-resources/
-├── views/
-│   ├── auth/
-│   ├── resident/
-│   ├── admin/
-│   └── layouts/
+## ⚙️ Core Features
 
-routes/
-└── web.php
-🚀 Installation
+### 📄 Documents
+- Barangay Clearance  
+- Certificate of Residency  
+- Certificate of Indigency  
+- Barangay ID  
+
+### 🔄 Workflow
+Pending → Under Review → Approved → Ready → Completed  
+
+### 📝 System
+- Concern Management  
+- Notifications  
+- Admin Dashboard  
+- Role-Based Access  
+
+---
+
+## 🛠️ Tech Stack
+
+- Laravel (PHP)  
+- MySQL  
+- Blade + Tailwind CSS  
+
+---
+
+## 🎨 UI Design
+
+- Blue `#0038A8`  
+- Red `#CE1126`  
+- Responsive design  
+
+---
+
+## 🔄 System Flow
+
+User → Request → Admin Review → Status Update → Notification → Release  
+
+---
+
+## 🚀 Installation
+
+```bash
 git clone https://github.com/your-username/ebarangay.git
 cd ebarangay
 composer install
 cp .env.example .env
 php artisan key:generate
-
-Configure your database in .env, then run:
-
 php artisan migrate:fresh --seed
 php artisan serve
-🔑 Default Admin Account
-Email: admin@ebarangay.test
-Password: password
-📚 Academic Context
+```
 
-This system is developed as a BS Information Technology Capstone Project for:
+---
 
-Palawan State University – Quezon Campus
+## 🔑 Admin Account
 
-💡 Note
+Email: admin@ebarangay.test  
+Password: password  
 
-This project is intended for academic purposes and may be further enhanced for real-world deployment.
+---
 
-⭐ Tagline
+## 📚 Academic Project
 
-Bringing barangay services closer to the community through digital transformation.
+BSIT Capstone Project  
+Palawan State University – Quezon Campus  
 
-✅ FINAL NOTE
+---
 
-👉 DO NOT wrap the whole thing in 👉 Only use for small sections like:
+## ⭐ Tagline
 
-project structure
-commands
+> Bringing barangay services online.
