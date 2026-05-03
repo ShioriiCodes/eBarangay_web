@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Laravel-10-red?style=for-the-badge&logo=laravel">
+  <img src="https://img.shields.io/badge/Laravel-12-red?style=for-the-badge&logo=laravel">
   <img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql">
   <img src="https://img.shields.io/badge/TailwindCSS-UI-38B2AC?style=for-the-badge&logo=tailwind-css">
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
