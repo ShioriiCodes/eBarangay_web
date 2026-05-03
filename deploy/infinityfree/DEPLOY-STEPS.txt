@@ -1,0 +1,73 @@
+eBarangay on InfinityFree (free hosting)
+========================================
+
+1) On your PC, from the project folder, prepare a production bundle:
+   composer run infinityfree:prepare
+
+   This installs JS deps, runs Vite build, reinstalls PHP packages without dev
+   dependencies, and clears Laravel caches so the server will read a fresh .env.
+   (Requires Node.js and npm. PHP must be 8.2+ to match InfinityFree.)
+
+2) In InfinityFree: Control Panel -> MySQL Databases -> create a database and user.
+   Note the host (often like sqlNNN.epizy.com), database name, username, and password.
+
+3) Copy .env.example to .env (or edit your existing .env) for production:
+   APP_NAME=eBarangay
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://your-subdomain.infinityfreeapp.com
+   TRUST_PROXIES=true
+
+   DB_CONNECTION=mysql
+   DB_HOST=(host from panel, NOT localhost)
+   DB_PORT=3306
+   DB_DATABASE=(panel database name)
+   DB_USERNAME=(panel username)
+   DB_PASSWORD=(panel password)
+
+   Generate a new APP_KEY on your PC: php artisan key:generate --show
+   Paste the value into APP_KEY on the server .env
+
+   Password reset email (Brevo): set MAIL_MAILER=brevo, BREVO_SMTP_USERNAME, BREVO_SMTP_PASSWORD
+   (SMTP key from Brevo dashboard). MAIL_FROM_ADDRESS must be a sender you verified in Brevo
+   (Senders & IP → Add a sender → confirm the email). Do not duplicate MAIL_MAILER lines in .env.
+   APP_URL must match the live site URL so the reset link in the email is correct. InfinityFree
+   allows external SMTP on port 587; see forum guides if connection still fails.
+
+4) Database schema: InfinityFree has no SSH/composer. Run migrations locally against
+   the same MySQL credentials if remote access is allowed, OR run migrations locally
+   then export a SQL dump from phpMyAdmin / mysqldump and import it in InfinityFree's
+   phpMyAdmin. Seed admin users the same way (local db:seed then export, or run seeder
+   locally pointed at remote DB if your IP is allowed).
+
+5) Upload the whole project by FTP/File Manager. You can use the document root
+   (htdocs/) or a subfolder such as htdocs/ebarangay/ (keep the same folder layout:
+   app, bootstrap, public, vendor, etc.).
+
+   Vite / front-end (required): public/build/ is in .gitignore, so it is NOT deployed
+   when you only push Git or copy the repo without ignored files. After
+   "npm run build" or "composer run infinityfree:prepare", always upload the full
+   folder public/build/ (manifest.json + assets/) to the server, e.g.
+   htdocs/ebarangay/public/build/. Missing it causes ViteManifestNotFoundException.
+
+   Windows shortcut: npm run build:zip-for-infinityfree creates
+   public-build-for-upload.zip (contains a "build" folder). Upload the zip, then
+   extract so files end up at htdocs/ebarangay/public/build/manifest.json (same
+   layout as on your PC under public/build/).
+
+   If you use htdocs/ebarangay/, set APP_URL to include that path, for example:
+   APP_URL=https://YOUR-SITE.infinityfreeapp.com/ebarangay
+   (no trailing slash). Rebuild front-end assets after changing APP_URL locally:
+   npm run build
+
+6) Rename deploy/infinityfree/htaccess-root.copy-as-.htaccess to .htaccess and put it
+   in the project root next to artisan (overwrite if an old one exists).
+
+7) In the control panel, set storage/ and bootstrap/cache/ (and subfolders) writable
+   if the site errors on logs/sessions (often 775 or as the host documents).
+
+8) public/storage: on your PC run php artisan storage:link, then upload; if symlinks
+   do not transfer, copy storage/app/public/* into public/storage/ on the server.
+
+9) Remove RedirectMatch rules that force /public in the URL (see InfinityFree forum);
+   the root .htaccess rewrite above is enough.

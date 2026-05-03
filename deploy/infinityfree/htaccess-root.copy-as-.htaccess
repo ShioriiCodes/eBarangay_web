@@ -1,0 +1,15 @@
+# InfinityFree: upload your full Laravel tree into htdocs (same layout as on your PC).
+# Rename THIS file to `.htaccess` and place it in the project root next to `artisan`
+# (not inside `public/`). It routes web traffic into `public/` because InfinityFree
+# cannot change the Apache document root to `public/`.
+
+<IfModule mod_authz_core.c>
+    <Files ".env">
+        Require all denied
+    </Files>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
