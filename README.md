@@ -4,7 +4,11 @@
   <b>Web-Based e-Governance and Document Requisition System</b><br>
   Alfonso XIII, Quezon, Palawan
 </p>
-
+<p align="center">
+  <a href="https://ebarangay.great-site.net/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐%20Live%20Website-Visit%20Now-blue?style=for-the-badge">
+  </a>
+</p>
 <p align="center">
   <img src="https://img.shields.io/badge/Laravel-12-red?style=for-the-badge&logo=laravel">
   <img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql">
